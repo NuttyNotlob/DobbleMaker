@@ -36,6 +36,7 @@ public class CardGenerator {
 
     public static void main(String[] args) {
         generateCards();
+        drawCards();
     }
 
     public static void generateCards() {
@@ -95,9 +96,19 @@ public class CardGenerator {
         }
     }
 
+    public static void drawCards() {
+        allCards.get(0).drawCard();
+        allCards.get(1).drawCard();
+        allCards.get(2).drawCard();
+        allCards.get(3).drawCard();
+//        for (DobbleCard card : allCards) {
+//            card.drawCard();
+//        }
+    }
+
     private static void assignImage(DobbleCard card) {
         // A fairly simple method, but allows the easy changing of file paths of file types if required
-        card.addImage("images/" + imageValue + ".jpg");
+        card.addImage("symbol" + imageValue + ".png");
     }
 
     public static int getPrimeValue() {
