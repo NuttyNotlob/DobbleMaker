@@ -2,7 +2,6 @@ package com.company.tests;
 
 import com.company.CardGenerator;
 import com.company.DobbleCard;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

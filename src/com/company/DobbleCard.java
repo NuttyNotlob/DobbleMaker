@@ -10,17 +10,18 @@ import java.util.*;
 import java.util.List;
 
 public class DobbleCard {
+    // Card fields
     private List<String> imageStrings;
     private static int cardsMade = 0;
     private int cardNumber;
 
-    // Card drawing parameters
-    private int cardWidth = 1200;
-    private int cardHeight = 1200;
-    private int borderThickness = 30;
-    private Color backgroundColor = Color.WHITE;
-    private Color outerRingColor = new Color(102, 0, 153); // Purple color
-    int maxSymbolDimension = 210;
+    // Card drawing fields
+    private static int cardWidth = 1250;
+    private static int cardHeight = 1250;
+    private static int borderThickness = 30;
+    private static Color backgroundColor = Color.WHITE;
+    private static Color outerRingColor = new Color(102, 0, 153); // Purple color
+    private static int maxSymbolDimension = 270;
 
     private static ArrayList<SymbolPositions> symbolPositions = new ArrayList<>();
 
@@ -46,21 +47,19 @@ public class DobbleCard {
     static {
         // Symbol placement positions. Will need as many here as there are symbols
         symbolPositions.add(new SymbolPositions(270, 168));
-        symbolPositions.add(new SymbolPositions(540, 65));
-        symbolPositions.add(new SymbolPositions(831, 242));
-        symbolPositions.add(new SymbolPositions(598, 302));
-        symbolPositions.add(new SymbolPositions(118, 398));
-        symbolPositions.add(new SymbolPositions(370, 411));
-        symbolPositions.add(new SymbolPositions(922, 572));
-        symbolPositions.add(new SymbolPositions(132, 696));
-        symbolPositions.add(new SymbolPositions(656, 542));
-        symbolPositions.add(new SymbolPositions(424, 680));
-        symbolPositions.add(new SymbolPositions(397, 910));
-        symbolPositions.add(new SymbolPositions(700, 856));
+        symbolPositions.add(new SymbolPositions(610, 105));
+        symbolPositions.add(new SymbolPositions(491, 843));
+        symbolPositions.add(new SymbolPositions(808, 402));
+        symbolPositions.add(new SymbolPositions(118, 458));
+        symbolPositions.add(new SymbolPositions(426, 471));
+        symbolPositions.add(new SymbolPositions(782, 692));
+        symbolPositions.add(new SymbolPositions(212, 756));
     }
 
     public DobbleCard() {
         this.imageStrings = new ArrayList<>();
+
+        // We also want to know the number of this card for use in the filename when saving the card image
         cardsMade++;
         cardNumber = cardsMade;
     }
@@ -132,10 +131,17 @@ public class DobbleCard {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // Printout to the console for confirmation. This doesn't confirm the card has been created correctly, only
+        // that all the code has run properly
+        System.out.println("Card " + cardNumber + " created");
     }
 
     public BufferedImage rotateImage(BufferedImage img, double angle) {
         // Rotation parameters (including new width and height that need to be calculated)
+        if (img == null) {
+            System.out.println("here be the problem");
+        }
         double rads = Math.toRadians(angle);
         double sin = Math.abs(Math.sin(rads));
         double cos = Math.abs(Math.cos(rads));
@@ -184,4 +190,11 @@ public class DobbleCard {
         return cardNumber;
     }
 
+    public static int getCardWidth() {
+        return cardWidth;
+    }
+
+    public static int getCardHeight() {
+        return cardHeight;
+    }
 }
